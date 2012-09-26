@@ -4,8 +4,8 @@ require File.expand_path('../lib/wp_rpc/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Alex Ferreira"]
   gem.email         = ["alex@dsol.com.br"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = "A Ruby library to interact with the Wordpress XMLRPC interface"
+  gem.summary       = "A Ruby library to interact with the Wordpress XMLRPC interface"
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
