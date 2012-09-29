@@ -33,7 +33,7 @@ Or install it yourself as:
 	blog.posts.find_recent(:limit => 20).map { |p| puts "#{p.id} | #{p.title}" }
 
 	# Create a new blog post
-	post = blog.posts.new(:title => 'Test', :description => 'This is a test', :keywords => 'test, testing', :published => true)
+	post = blog.posts.new(:title => 'Test', :content => 'This is a test', :keywords => 'test, testing', :published => true)
 	post.save
 
 	# Edit a blog post
