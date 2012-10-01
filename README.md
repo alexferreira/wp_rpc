@@ -44,6 +44,24 @@ Or install it yourself as:
 	# Upload an attachment
 	attachment = blog.attachments.new(:name => 'Photo of me', :filename => '/home/john/me.jpg')
 	attachment.save
+	
+	# Retrieve list of supported values for post_status field on posts.
+	blog.posts.status
+	
+	# Retrieve list of post formats.
+	blog.posts.formats
+	
+	# Retrieve list of registered post types.
+	blog.posts.types
+	
+	# Retrieve a registered post type.
+	blog.posts.type('page')
+	
+	# Delete an existing post of any registered post type.
+	blog.posts.delete(post.id)
+	
+	# Delete several existing posts of any registered post type.
+	blog.posts.delete([1,2])
 
 ### Contributing
 
