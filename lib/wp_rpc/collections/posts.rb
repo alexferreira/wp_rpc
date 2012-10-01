@@ -25,6 +25,34 @@ module WpRpc
       def all
         change_attributes(conn.call('wp.getPosts', conn.blog_id, conn.username, conn.password), pattern)
       end
+
+      def delete(ids)
+        posts = {}
+        if ids.is_a?(Array)
+          ids.each do |id|
+            posts = posts.merge({id => conn.call('wp.deletePost', conn.blog_id, conn.username, conn.password, id) })
+          end 
+          posts
+        else 
+          conn.call('wp.deletePost', conn.blog_id, conn.username, conn.password, id)
+        end
+      end
+
+      def status
+        conn.call('wp.getPostStatusList', conn.blog_id, conn.username, conn.password)
+      end
+
+      def formats
+        conn.call('wp.getPostFormats', conn.blog_id, conn.username, conn.password)
+      end
+
+      def types
+        conn.call('wp.getPostTypes', conn.blog_id, conn.username, conn.password)
+      end
+
+      def type(name)
+        conn.call('wp.getPostType', conn.blog_id, conn.username, conn.password, name)
+      end
     end  
   end
 end
