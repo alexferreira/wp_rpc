@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Wp RPC : Ruby library for interacting with Wordpress blogs using the XMLRPC interface" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Wp RPC</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/alexferreira/wp_rpc">View on GitHub</a>
+
+          <h1 id="project_title">Wp RPC</h1>
+          <h2 id="project_tagline">Ruby library for interacting with Wordpress blogs using the XMLRPC interface</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/alexferreira/wp_rpc/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/alexferreira/wp_rpc/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>WpRpc</h1>
+
+<p>WpRpc is a Ruby library for reading and writing blogs to Wordpress via XMLRPC interface.</p>
+
+<p>The documentation is missing and the test set is not complete.</p>
+
+<h2>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'wp_rpc'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install wp_rpc
+</code></pre>
+
+<h3>Usage</h3>
+
+<pre><code>require 'wp_rpc'
+blog = WpRpc::Blog.new :url =&gt; 'http://www.example.com/xmlrpc.php', :username =&gt; 'admin', :password=&gt; 'admin'
+
+# Output the list of categories
+blog.categories.map { |c| puts "Category: #{c.name}" }
+
+# Get List of Posts
+blog.posts.all.map{|p| puts p['title']}
+
+# Get the 20 most recent posts
+blog.posts.find_recent(:limit =&gt; 20).map { |p| puts "#{p.id} | #{p.title}" }
+
+# Create a new blog post
+post = blog.posts.new(:title =&gt; 'Test', :content =&gt; 'This is a test', :keywords =&gt; 'test, testing', :published =&gt; true)
+post.save
+
+# Edit a blog post
+post = blog.posts.find(1)
+post.title = "Edited title"
+post.save
+
+# Upload an attachment
+attachment = blog.attachments.new(:name =&gt; 'Photo of me', :filename =&gt; '/home/john/me.jpg')
+attachment.save
+
+# Retrieve list of supported values for post_status field on posts.
+blog.posts.status
+
+# Retrieve list of post formats.
+blog.posts.formats
+
+# Retrieve list of registered post types.
+blog.posts.types
+
+# Retrieve a registered post type.
+blog.posts.type('page')
+
+# Delete an existing post of any registered post type.
+blog.posts.delete(post.id)
+
+# Delete several existing posts of any registered post type.
+blog.posts.delete([1,2])
+</code></pre>
+
+<h3>Contributing</h3>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Wp RPC maintained by <a href="https://github.com/alexferreira">alexferreira</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
