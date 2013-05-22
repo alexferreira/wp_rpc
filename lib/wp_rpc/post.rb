@@ -15,9 +15,9 @@ module WpRpc
       attr = attr.each { |k,v| symbolized_attr[k.to_sym] = v }
       attr = symbolized_attr
       @title = attr[:title]
-      @keywords = attr[:keywords].to_s.split(/,|;/).collect { |k| k.strip }
+      @keywords = attr[:mt_keywords].to_s.split(/,|;/).collect { |k| k.strip }
       @categories = attr[:categories]
-      @content = attr[:content]
+      @content = attr[:description]
       @created_at = attr[:dateCreated]
       @id = attr[:postid]
       @userid = attr[:userid]
